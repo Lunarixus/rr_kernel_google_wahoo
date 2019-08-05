@@ -6144,8 +6144,6 @@ boosted_task_util(struct task_struct *task)
 	return util + margin;
 }
 
-static int cpu_util_wake(int cpu, struct task_struct *p);
-
 static unsigned long capacity_spare_wake(int cpu, struct task_struct *p)
 {
 	return capacity_orig_of(cpu) - cpu_util_wake(cpu, p);
