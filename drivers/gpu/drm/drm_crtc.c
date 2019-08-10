@@ -5702,12 +5702,12 @@ EXPORT_SYMBOL(drm_format_vert_chroma_subsampling);
  * @supported_rotations: Supported rotations
  *
  * Attempt to simplify the rotation to a form that is supported.
- * Eg. if the hardware supports everything except DRM_REFLECT_X
+ * Eg. if the hardware supports everything except DRM_MODE_REFLECT_X
  * one could call this function like this:
  *
  * drm_rotation_simplify(rotation, BIT(DRM_ROTATE_0) |
  *                       BIT(DRM_ROTATE_90) | BIT(DRM_ROTATE_180) |
- *                       BIT(DRM_ROTATE_270) | BIT(DRM_REFLECT_Y));
+ *                       BIT(DRM_ROTATE_270) | BIT(DRM_MODE_REFLECT_Y));
  *
  * to eliminate the DRM_ROTATE_X flag. Depending on what kind of
  * transforms the hardware supports, this function may not
@@ -5718,7 +5718,7 @@ unsigned int drm_rotation_simplify(unsigned int rotation,
 				   unsigned int supported_rotations)
 {
 	if (rotation & ~supported_rotations) {
-		rotation ^= BIT(DRM_REFLECT_X) | BIT(DRM_REFLECT_Y);
+		rotation ^= BIT(DRM_MODE_REFLECT_X) | BIT(DRM_MODE_REFLECT_Y);
 		rotation = (rotation & DRM_REFLECT_MASK) |
 		           BIT((ffs(rotation & DRM_ROTATE_MASK) + 1) % 4);
 	}
@@ -5849,8 +5849,8 @@ struct drm_property *drm_mode_create_rotation_property(struct drm_device *dev,
 		{ DRM_ROTATE_90,  "rotate-90" },
 		{ DRM_ROTATE_180, "rotate-180" },
 		{ DRM_ROTATE_270, "rotate-270" },
-		{ DRM_REFLECT_X,  "reflect-x" },
-		{ DRM_REFLECT_Y,  "reflect-y" },
+		{ DRM_MODE_REFLECT_X,  "reflect-x" },
+		{ DRM_MODE_REFLECT_Y,  "reflect-y" },
 	};
 
 	return drm_property_create_bitmask(dev, 0, "rotation",

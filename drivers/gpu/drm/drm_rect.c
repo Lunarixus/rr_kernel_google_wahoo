@@ -316,15 +316,15 @@ void drm_rect_rotate(struct drm_rect *r,
 {
 	struct drm_rect tmp;
 
-	if (rotation & (BIT(DRM_REFLECT_X) | BIT(DRM_REFLECT_Y))) {
+	if (rotation & (BIT(DRM_MODE_REFLECT_X) | BIT(DRM_MODE_REFLECT_Y))) {
 		tmp = *r;
 
-		if (rotation & BIT(DRM_REFLECT_X)) {
+		if (rotation & BIT(DRM_MODE_REFLECT_X)) {
 			r->x1 = width - tmp.x2;
 			r->x2 = width - tmp.x1;
 		}
 
-		if (rotation & BIT(DRM_REFLECT_Y)) {
+		if (rotation & BIT(DRM_MODE_REFLECT_Y)) {
 			r->y1 = height - tmp.y2;
 			r->y2 = height - tmp.y1;
 		}
@@ -418,15 +418,15 @@ void drm_rect_rotate_inv(struct drm_rect *r,
 		break;
 	}
 
-	if (rotation & (BIT(DRM_REFLECT_X) | BIT(DRM_REFLECT_Y))) {
+	if (rotation & (BIT(DRM_MODE_REFLECT_X) | BIT(DRM_MODE_REFLECT_Y))) {
 		tmp = *r;
 
-		if (rotation & BIT(DRM_REFLECT_X)) {
+		if (rotation & BIT(DRM_MODE_REFLECT_X)) {
 			r->x1 = width - tmp.x2;
 			r->x2 = width - tmp.x1;
 		}
 
-		if (rotation & BIT(DRM_REFLECT_Y)) {
+		if (rotation & BIT(DRM_MODE_REFLECT_Y)) {
 			r->y1 = height - tmp.y2;
 			r->y2 = height - tmp.y1;
 		}

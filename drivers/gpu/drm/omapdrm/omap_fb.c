@@ -191,10 +191,10 @@ void omap_framebuffer_update_scanout(struct drm_framebuffer *fb,
 			break;
 		}
 
-		if (win->rotation & BIT(DRM_REFLECT_X))
+		if (win->rotation & BIT(DRM_MODE_REFLECT_X))
 			orient ^= MASK_X_INVERT;
 
-		if (win->rotation & BIT(DRM_REFLECT_Y))
+		if (win->rotation & BIT(DRM_MODE_REFLECT_Y))
 			orient ^= MASK_Y_INVERT;
 
 		/* adjust x,y offset for flip/invert: */
